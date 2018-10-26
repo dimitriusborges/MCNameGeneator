@@ -105,18 +105,20 @@ class NameGenerator:
 class Main:
     def __init__(self):
         """"""
+        self.max_size = 8
+        self.total_gen = 5
+        self.st_size = 2
+        self.path_db = "D:/Dropbox/Estudos/Mestrado/Codigos/Python/MarkovNameGenerator/database"
 
     def name_gen(self):
 
         # get the database
-        with open("D:/Dropbox/Estudos/Mestrado/Codigos/Python/MarkovNameGenerator/database") as db:
+        with open(self.path_db) as db:
             data = db.readlines()
         data = [unicodedata.normalize('NFD', (reg.strip()).lower()) for reg in data]
         data = [(reg.encode("ascii", "ignore")).decode("utf-8") for reg in data]
 
-        max_size = 8
-        total_gen = 5
-        ng = NameGenerator(data, st_size=2)
+        ng = NameGenerator(data, st_size=self.st_size)
         ng.set_states()
         ng.set_states_prob()
         ng.build_mc()
@@ -124,7 +126,7 @@ class Main:
         print(ng.initial_prob)
         ng.print_mc()
 
-        for _ in range(0, total_gen):
+        for _ in range(0, self.total_gen):
             # the random walk starts form a state drawn from the initial prob.
             random_name = ""
 
@@ -134,7 +136,7 @@ class Main:
             random_name = random_name[0].upper() + random_name[1:]
 
             # then, n states are determined from the prob matrix
-            while len(random_name) < max_size:
+            while len(random_name) < self.max_size:
                 prob_estado = ng.prob_matrix[estado] # probabilities associated to the last state visited
 
                 if sum(prob_estado) > 0: # if the state isn't an absorbing one
