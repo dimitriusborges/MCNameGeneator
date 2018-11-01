@@ -1,4 +1,4 @@
-## MCNameGeneator
+## MCNameGenerator
 
   ## **Description**
     This simple code emulates the principles of a Markov Chain to generate random names seeded from a database.
