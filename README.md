@@ -1,10 +1,10 @@
 ## MCNameGenerator
 
   ## **Description**
-    This simple code emulates the principles of a Markov Chain to generate random names seeded from a database.
+  This simple code emulates the principles of a Markov Chain to generate random names seeded from a database.
 
   ## **Limitations**
-    This first version requires single names, with no accents or especial characters, written in roman alphabet, one per row. 
+  This first version requires single names, with no accents or especial characters, written in roman alphabet, one per row. 
     
  ## **Configuration**
   - The Database is represented by a .txt external file, indicated through its real path. 
